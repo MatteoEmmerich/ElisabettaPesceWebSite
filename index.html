@@ -1,103 +1,1031 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sito in Costruzione</title>
-    <style>
-        /* Stili generali della pagina */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #333;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elisabetta Pesce</title>
+  <link rel="icon" type="image/png" href="./logo.png" />
+  <link rel="shortcut icon" href="./logo.png" />
+  <link rel="apple-touch-icon" href="./logo.png" />
+  <style>
+    :root {
+      --blue: #23288C;
+      --page-blue: #2B509B;
+      --yellow: #FFD200;
+      --text: #1b1b1b;
+      --bg: var(--page-blue);
+    }
 
-        /* Contenitore principale */
-        .container {
-            background: white;
-            padding: 50px 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            width: 85%;
-        }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+    }
 
-        /* Icona animata */
-        .icon {
-            font-size: 60px;
-            margin-bottom: 20px;
-            display: inline-block;
-            animation: spin 4s linear infinite;
-        }
+    a { text-decoration: none; }
 
-        /* Testi */
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-            color: #2c3e50;
-            letter-spacing: 1px;
-        }
+    .container-wide {
+      width: min(1680px, calc(100% - 64px));
+      margin: 0 auto;
+    }
 
-        p {
-            font-size: 1.1em;
-            color: #666;
-            margin-top: 15px;
-            line-height: 1.6;
-        }
+    .container {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
 
-        /* Barra di caricamento animata */
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background-color: #e0e0e0;
-            border-radius: 4px;
-            margin-top: 35px;
-            overflow: hidden;
-        }
+    header {
+      background: var(--blue);
+      color: white;
+      box-shadow: 0 10px 30px rgba(0,0,0,.14);
+      font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+      position: relative;
+      z-index: 20;
+    }
 
-        .progress {
-            height: 100%;
-            background-color: #3498db;
-            border-radius: 4px;
-            animation: load 2s infinite alternate ease-in-out;
-        }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      min-height: 112px;
+      padding: 14px 0;
+    }
 
-        /* Animazioni */
-        @keyframes spin {
-            100% { transform: rotate(360deg); }
-        }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-width: 0;
+      flex: 1 1 auto;
+    }
 
-        @keyframes load {
-            0% { width: 20%; }
-            100% { width: 80%; }
-        }
-        
-        /* Adattamento per schermi piccoli */
-        @media (max-width: 480px) {
-            h1 { font-size: 2em; }
-            .container { padding: 30px 20px; }
-        }
-    </style>
+    .brand-logo {
+      display: block;
+      width: 76px;
+      height: 76px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .brand-title-wrap {
+      position: relative;
+      display: inline-block;
+      padding-right: 54px;
+    }
+
+    .brand-name {
+      margin: 0;
+      color: white;
+      text-transform: uppercase;
+      line-height: .95;
+      letter-spacing: 0.04em;
+      font-size: clamp(2.05rem, 2.65vw, 2.45rem);
+      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .brand-pencil {
+      position: absolute;
+      top: -6px;
+      right: 0;
+      display: block;
+      width: 46px;
+      height: 46px;
+      object-fit: contain;
+      pointer-events: none;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 18px 36px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      flex: 0 0 auto;
+    }
+
+    nav a {
+      color: white;
+      transition: color .2s ease, opacity .2s ease;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    nav a:hover,
+    nav a:active,
+    nav a:focus-visible {
+      color: var(--yellow);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 34px;
+      height: 34px;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      color: white;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      transition: opacity .2s ease;
+      flex-shrink: 0;
+    }
+
+    .menu-toggle:hover {
+      opacity: .9;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      transition: transform .2s ease, opacity .2s ease, background .2s ease;
+    }
+
+    .menu-toggle.is-open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle.is-open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.is-open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .hero {
+      width: 100%;
+      background: white;
+      padding: 0;
+      margin: 0;
+      line-height: 0;
+    }
+
+    .hero-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0;
+    }
+
+    .blue-section {
+      background: var(--page-blue);
+      padding: 48px 0 64px;
+    }
+
+    .card {
+      width: min(900px, 100%);
+      margin: 0 auto;
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 24px 50px rgba(0,0,0,.16);
+      padding: 32px 24px;
+    }
+
+    .intro-letter {
+      margin-bottom: 32px;
+      color: var(--text);
+      font-family: "Trebuchet MS", "Gill Sans", "Segoe UI", sans-serif;
+      font-size: 1.05rem;
+      line-height: 2;
+    }
+
+    .intro-letter p { margin: 0 0 16px; }
+
+    .intro-letter .saluto {
+      font-family: "Brush Script MT", "Segoe Script", cursive;
+      font-size: clamp(1.45rem, 2.4vw, 1.7rem);
+      line-height: 1;
+      color: #3a3a3a;
+    }
+
+    .intro-letter .body {
+      font-family: "Comic Sans MS", "Comic Sans", cursive;
+    }
+
+    .intro-letter .firma {
+      padding-top: 4px;
+      font-family: "Brush Script MT", "Segoe Script", cursive;
+      font-size: clamp(1.5rem, 2.5vw, 1.75rem);
+      line-height: 1;
+      color: #3a3a3a;
+      margin-bottom: 0;
+    }
+
+    .accordion { display: grid; gap: 12px; }
+
+    .accordion-item { scroll-margin-top: 110px; }
+
+    .accordion-trigger {
+      width: 100%;
+      border: 0;
+      border-radius: 999px;
+      background: var(--blue);
+      color: white;
+      padding: 16px 24px;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+      font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+      font-size: .98rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      transition: opacity .2s ease;
+    }
+
+    .accordion-trigger:hover { opacity: .95; }
+
+    .accordion-icon {
+      min-width: 28px;
+      text-align: center;
+      font-size: 1.4rem;
+      line-height: 1;
+      color: white;
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 20px 8px 8px;
+      font-size: 1.04rem;
+      line-height: 2;
+      color: var(--text);
+    }
+
+    .accordion-item.open .accordion-content { display: block; }
+    .accordion-item.open .icon-plus { display: none; }
+    .accordion-item:not(.open) .icon-minus { display: none; }
+
+    footer {
+      background: white;
+      padding: 40px 0;
+      font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .socials a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform .2s ease, opacity .2s ease;
+    }
+
+    .socials a:hover {
+      transform: scale(1.1);
+      opacity: .85;
+    }
+
+    .socials svg {
+      width: 28px;
+      height: 28px;
+      display: block;
+    }
+
+    .cookie-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.2);
+      z-index: 90;
+    }
+
+    .cookie-banner-wrap {
+      position: fixed;
+      inset-inline: 0;
+      bottom: 0;
+      padding: 0 16px 16px;
+      z-index: 100;
+    }
+
+    .cookie-banner {
+      width: min(1000px, 100%);
+      margin: 0 auto;
+      background: white;
+      border: 1px solid #F4F4F4;
+      border-radius: 24px;
+      box-shadow: 0 20px 80px rgba(0,0,0,.18);
+      padding: 20px 24px;
+    }
+
+    .cookie-banner-row {
+      display: flex;
+      gap: 20px;
+      align-items: end;
+      justify-content: space-between;
+    }
+
+    .cookie-text {
+      max-width: 720px;
+      color: #212121;
+      font: 400 16px/1.65 Arial, sans-serif;
+    }
+
+    .cookie-text a {
+      color: #1863DC;
+      font-weight: 600;
+    }
+
+    .cookie-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      border-radius: 12px;
+      padding: 10px 20px;
+      font: 600 14px/1 Arial, sans-serif;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: .2s ease;
+      background: white;
+    }
+
+    .btn-outline-blue {
+      color: #1863DC;
+      border-color: #1863DC;
+      background: transparent;
+    }
+
+    .btn-outline-blue:hover { background: #eff6ff; }
+
+    .btn-solid-blue {
+      color: white;
+      background: #1863DC;
+      border-color: #1863DC;
+    }
+
+    .btn-solid-blue:hover { opacity: .9; }
+
+    .btn-outline-gray {
+      color: #444;
+      border-color: #ddd;
+    }
+
+    .btn-outline-gray:hover { background: #fafafa; }
+
+    .cookie-modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,.45);
+      z-index: 110;
+      padding: 16px;
+    }
+
+    .cookie-modal.show { display: flex; }
+
+    .cookie-dialog {
+      width: min(900px, 100%);
+      max-height: 90vh;
+      overflow: hidden;
+      background: white;
+      border: 1px solid #F4F4F4;
+      border-radius: 28px;
+      box-shadow: 0 30px 100px rgba(0,0,0,.25);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cookie-head, .cookie-foot {
+      padding: 16px 24px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .cookie-foot {
+      border-bottom: 0;
+      border-top: 1px solid #e5e5e5;
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cookie-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .cookie-head h3 {
+      margin: 0;
+      font: 700 18px/1.2 Arial, sans-serif;
+      color: #212121;
+    }
+
+    .close-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid #ddd;
+      background: white;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .cookie-body {
+      overflow: auto;
+      padding: 20px 24px;
+    }
+
+    .cookie-intro {
+      border-bottom: 1px solid #e5e5e5;
+      padding-bottom: 24px;
+      margin-bottom: 24px;
+      color: #212121;
+      font: 400 16px/1.65 Arial, sans-serif;
+    }
+
+    .cookie-intro a {
+      color: #1863DC;
+      font-weight: 600;
+    }
+
+    .cookie-category {
+      border: 1px solid #e5e5e5;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+      font-family: Arial, sans-serif;
+    }
+
+    .cookie-category-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .cookie-category h4 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      color: #212121;
+    }
+
+    .always-active {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: #f3f3f3;
+      color: #777;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+    }
+
+    .cookie-category p {
+      margin: 12px 0 0;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    .switch {
+      width: 52px;
+      height: 30px;
+      border-radius: 999px;
+      background: #cfcfcf;
+      position: relative;
+      flex-shrink: 0;
+      border: 0;
+      cursor: pointer;
+      transition: background .2s ease, opacity .2s ease, transform .2s ease;
+    }
+
+    .switch::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,.18);
+      transition: left .2s ease;
+    }
+
+    .switch.is-on {
+      background: #1863DC;
+    }
+
+    .switch.is-on::after {
+      left: 25px;
+    }
+
+    .switch.is-disabled {
+      cursor: not-allowed;
+      opacity: .7;
+    }
+
+    .switch:focus-visible {
+      outline: 3px solid rgba(24,99,220,.22);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 900px) {
+      .container-wide { width: calc(100% - 28px); }
+
+      .header-inner {
+        position: relative;
+        min-height: auto;
+        padding: 16px 0;
+        gap: 14px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .brand {
+        min-width: 0;
+        padding-right: 8px;
+        flex: 1 1 auto;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+        margin-left: auto;
+      }
+
+      nav {
+        display: flex;
+        position: static;
+        width: 100%;
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 0;
+        margin-top: 0;
+        flex-basis: 100%;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 18px;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transition: max-height .28s ease, opacity .2s ease, margin-top .2s ease, padding-top .2s ease;
+      }
+
+      nav.open {
+        max-height: 80px;
+        opacity: 1;
+        pointer-events: auto;
+        margin-top: 4px;
+        padding-top: 2px;
+      }
+
+      nav a {
+        width: auto;
+        padding: 0;
+        border-radius: 0;
+        background: transparent;
+        text-align: left;
+        font-size: .82rem;
+        line-height: 1;
+      }
+
+      nav a:hover {
+        color: var(--yellow);
+        background: transparent;
+      }
+
+      .cookie-banner-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container-wide,
+      .container { width: calc(100% - 16px); }
+
+      .header-inner { padding: 12px 0; }
+
+      .brand {
+        gap: 10px;
+      }
+
+      .brand-logo {
+        width: 52px;
+        height: 52px;
+      }
+
+      .brand-title-wrap {
+        padding-right: 30px;
+      }
+
+      .brand-name {
+        font-size: 1.34rem;
+      }
+
+      .brand-pencil {
+        top: -4px;
+        width: 24px;
+        height: 24px;
+      }
+
+      .menu-toggle {
+        width: 30px;
+        height: 30px;
+      }
+
+      nav {
+        font-size: .82rem;
+      }
+
+      .card {
+        border-radius: 24px;
+        padding: 24px 18px;
+      }
+
+      .hero-image {
+        width: 100%;
+        height: auto;
+      }
+
+      .blue-section {
+        padding: 34px 0 48px;
+      }
+
+      .accordion-trigger {
+        font-size: .88rem;
+        padding: 15px 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-    <div class="container">
-        <div class="icon">⚙️</div>
-        <h1>Work in Progress</h1>
-        <p>Stiamo lavorando al nostro nuovo sito web per offrirti un'esperienza fantastica. Torna a trovarci presto!</p>
-        
-        <div class="progress-bar">
-            <div class="progress"></div>
+  <header>
+    <div class="container-wide header-inner">
+      <div class="brand">
+        <img src="./logo.png" alt="Logo Elisabetta Pesce" class="brand-logo" />
+        <div class="brand-title-wrap">
+          <p class="brand-name">ELISABETTA PESCE</p>
+          <img src="./matita.png" alt="" class="brand-pencil" aria-hidden="true" />
         </div>
-    </div>
+      </div>
 
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Apri il menu di navigazione" aria-expanded="false" aria-controls="siteNav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="siteNav">
+        <a href="#mi-presento" data-open="mi-presento">La mia storia</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <img src="./foto1.png" alt="Elisabetta Pesce" class="hero-image" />
+    </section>
+
+    <section class="blue-section">
+      <div class="container">
+        <div class="card">
+          <div class="intro-letter">
+            <p class="saluto">Care cittadine e cari cittadini,</p>
+            <p class="body">mi candido come Consigliera comunale di Venezia perché questa città è la mia casa, dove sono nata e ho costruito la mia vita.</p>
+            <p class="body">Da Mestre a Marghera, fino alla Gazzera dove vivo dal 1997, il mio percorso è sempre stato legato al territorio e alle sue comunità.</p>
+            <p class="body">Laureata in Scienze Politiche con formazione in marketing internazionale, ho maturato la mia esperienza lavorativa tra Mestre e Marghera, acquisendo competenze organizzative, gestionali e di problem solving.</p>
+            <p class="body">Nel 2020 eletta Consigliera della Municipalità di Chirignago Zelarino e nominata Vicepresidente esecutivo con deleghe a sicurezza, commercio, verde pubblico e parchi, lavorando a progetti per migliorare i quartieri.</p>
+            <p class="body">Nel 2022 ho assunto il ruolo di Assessore alla sicurezza del Comune di Venezia impegnandomi per rafforzare il controllo del territorio e migliorare la sicurezza nei quartieri, con particolare attenzione ai giovani.</p>
+            <p class="body">Oggi voglio continuare questo impegno insieme a voi, con ascolto e concretezza.</p>
+            <p class="body">Insieme per la nostra città!</p>
+            <p class="firma">Elisabetta Pesce</p>
+          </div>
+
+          <div class="accordion">
+            <div class="accordion-item" id="mi-presento">
+              <button class="accordion-trigger" type="button" data-target="mi-presento">
+                <span>La mia storia</span>
+                <span class="accordion-icon">
+                  <span class="icon-plus">+</span>
+                  <span class="icon-minus">−</span>
+                </span>
+              </button>
+              <div class="accordion-content">
+                <p>Sono nata a Mestre nel 1967 e cresciuta a Marghera, dove la mia famiglia ha gestito un’attività commerciale fondata dai miei nonni paterni tra la prima e la seconda guerra mondiale. Un’esperienza che mi ha trasmesso il valore del lavoro, del sacrificio e il forte legame con il territorio.</p>
+                <p>Ho frequentato l’Istituto tecnico commerciale “Foscari”, dove ho avuto anche l’opportunità di far parte della squadra di pallavolo, partecipando alle finali nazionali dei campionati studenteschi a Cagliari. Successivamente mi sono laureata in Scienze Politiche e ho conseguito un corso post laurea in marketing e commercio internazionale presso l’Università di Padova.</p>
+                <p>Ho iniziato il mio percorso professionale in una società di servizi informatici con sede prima a Mestre e poi a Marghera, maturando competenze organizzative, gestionali e di problem solving.</p>
+                <p>Dal 1997 vivo alla Gazzera, sono mamma di un figlio e credo profondamente nei valori della famiglia, della comunità e delle nostre tradizioni. Da sempre coltivo la passione per lo sport e il ballo, strumenti importanti di aggregazione e benessere.</p>
+                <p>Nel 2020 sono stata eletta Consigliera della Municipalità di Chirignago Zelarino e nominata Vicepresidente dell’esecutivo, con deleghe alla sicurezza, al commercio, al verde pubblico e ai parchi, lavorando su nuovi progetti che hanno contribuito a migliorare la Municipalità e la qualità della vita nei quartieri.</p>
+                <p>Nel 2022 ho accettato con senso di responsabilità l’incarico di Assessore alla sicurezza del Comune di Venezia, con l’obiettivo di contribuire concretamente al miglioramento della qualità della vita dei cittadini.</p>
+                <p>In questi anni ho avuto l’onore di servire la nostra comunità con impegno e determinazione, seguendo da vicino progetti di potenziamento della videosorveglianza, iniziative educative rivolte ai giovani e interventi mirati a rafforzare la sicurezza nei nostri quartieri.</p>
+                <p>Con lo stesso impegno, intendo continuare a lavorare per una città attenta alle persone e vicina ai bisogni dei cittadini, mettendo al centro ascolto, concretezza e responsabilità.</p>
+              </div>
+            </div>
+
+            <!--
+            <div class="accordion-item" id="lavoro-venezia">
+              <button class="accordion-trigger" type="button" data-target="lavoro-venezia">
+                <span>Il mio lavoro a Venezia</span>
+                <span class="accordion-icon">
+                  <span class="icon-plus">+</span>
+                  <span class="icon-minus">−</span>
+                </span>
+              </button>
+              <div class="accordion-content">
+                <p>In questo pannello puoi raccontare i progetti seguiti, le attività svolte, gli obiettivi raggiunti e le azioni più rilevanti per il territorio.</p>
+                <p>Il formato ad apertura rende tutto più ordinato: la home resta pulita, ma i contenuti sono subito disponibili appena si clicca sul +.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item" id="impegno-veneto">
+              <button class="accordion-trigger" type="button" data-target="impegno-veneto">
+                <span>Il mio impegno per Venezia</span>
+                <span class="accordion-icon">
+                  <span class="icon-plus">+</span>
+                  <span class="icon-minus">−</span>
+                </span>
+              </button>
+              <div class="accordion-content">
+                <p>Questo blocco finale può raccogliere visione, priorità, valori e messaggio politico finale con uno stile semplice e riconoscibile.</p>
+                <p>L'effetto complessivo rimane molto vicino al layout che hai disegnato: una grande fascia blu, tre azioni principali e un contenuto che si apre sotto.</p>
+              </div>
+            </div>
+            -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container socials">
+        <a href="https://www.instagram.com/elisabetta.pesce?igsh=Y3Nqd2ZnbGRtaXE0" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <defs>
+              <linearGradient id="instagramGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#feda75"></stop>
+                <stop offset="30%" stop-color="#fa7e1e"></stop>
+                <stop offset="60%" stop-color="#d62976"></stop>
+                <stop offset="85%" stop-color="#962fbf"></stop>
+                <stop offset="100%" stop-color="#4f5bd5"></stop>
+              </linearGradient>
+            </defs>
+            <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="url(#instagramGradient)" stroke-width="2"></rect>
+            <circle cx="12" cy="12" r="4" fill="none" stroke="url(#instagramGradient)" stroke-width="2"></circle>
+            <circle cx="17.5" cy="6.5" r="1.1" fill="url(#instagramGradient)"></circle>
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/share/17CSxLoLNe/?mibextid=wwXIfr" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#1877F2" d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.026 4.388 11.022 10.125 11.927v-8.437H7.078v-3.49h3.047V9.413c0-3.022 1.792-4.693 4.533-4.693 1.313 0 2.686.235 2.686.235v2.97h-1.514c-1.491 0-1.956.931-1.956 1.886v2.262h3.328l-.532 3.49h-2.796V24C19.612 23.095 24 18.099 24 12.073z"></path>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@pesceelisabetta?_r=1&_t=ZN-958BfkNuXWY" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="12" fill="#111111"></circle>
+            <path fill="#ffffff" d="M14.52 5.2h-2.1v8.51a2.12 2.12 0 1 1-2.12-2.06c.18 0 .35.02.51.06V9.56a4.27 4.27 0 1 0 3.71 4.23V9.37c.82.58 1.82.94 2.88.96V8.23c-1.58-.05-2.88-1.35-2.88-3.03Z"></path>
+          </svg>
+        </a>
+      </div>
+    </footer>
+  </main>
+
+  <div class="cookie-overlay" id="cookieOverlay"></div>
+  <div class="cookie-banner-wrap" id="cookieBannerWrap">
+    <div class="cookie-banner">
+      <div class="cookie-banner-row">
+        <div class="cookie-text">
+          Questo sito utilizza cookie tecnici necessari per il funzionamento del sito stesso. Continuando la navigazione, accetti l'utilizzo dei cookie.
+          <a href="#">Leggi la Cookie Policy</a>
+        </div>
+        <div class="cookie-actions">
+          <button class="btn btn-outline-blue" id="rejectCookies">Rifiuta</button>
+          <button class="btn btn-solid-blue" id="acceptCookies">Accetta</button>
+          <button class="btn btn-outline-gray" id="openPreferences">Preferenze</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cookie-modal" id="cookieModal">
+    <div class="cookie-dialog">
+      <div class="cookie-head">
+        <h3>Preferenze cookie</h3>
+        <button class="close-btn" id="closePreferences" aria-label="Chiudi">×</button>
+      </div>
+
+      <div class="cookie-body">
+        <div class="cookie-intro">
+          Questo sito utilizza cookie tecnici necessari per il funzionamento del sito stesso. Continuando la navigazione, accetti l'utilizzo dei cookie.
+          <a href="#">Leggi la Cookie Policy</a>
+        </div>
+
+        <div class="cookie-category">
+          <div class="cookie-category-top">
+            <div>
+              <h4>Necessary</h4>
+              <span class="always-active">Sempre attivi</span>
+              <p>Necessary cookies are required to enable the basic features of this site, such as providing secure log-in or adjusting your consent preferences. These cookies do not store any personally identifiable data.</p>
+            </div>
+            <button class="switch is-on is-disabled" type="button" aria-label="Cookie necessari sempre attivi" aria-pressed="true" disabled></button>
+          </div>
+        </div>
+
+        <div class="cookie-category">
+          <div class="cookie-category-top">
+            <div>
+              <h4>Functional</h4>
+              <span class="always-active">Opzionali</span>
+              <p>Functional cookies help perform certain functionalities like sharing the content of the website on social media platforms, collecting feedback, and other third-party features.</p>
+            </div>
+            <button class="switch is-on" type="button" data-cookie-toggle aria-label="Attiva o disattiva i cookie funzionali" aria-pressed="true"></button>
+          </div>
+        </div>
+
+        <div class="cookie-category">
+          <div class="cookie-category-top">
+            <div>
+              <h4>Analytics</h4>
+              <span class="always-active">Opzionali</span>
+              <p>Analytical cookies are used to understand how visitors interact with the website. These cookies help provide information on metrics such as the number of visitors, bounce rate, traffic source, etc.</p>
+            </div>
+            <button class="switch is-on" type="button" data-cookie-toggle aria-label="Attiva o disattiva i cookie analytics" aria-pressed="true"></button>
+          </div>
+        </div>
+
+        <div class="cookie-category">
+          <div class="cookie-category-top">
+            <div>
+              <h4>Performance</h4>
+              <span class="always-active">Opzionali</span>
+              <p>Performance cookies are used to understand and analyse the key performance indexes of the website which helps in delivering a better user experience for the visitors.</p>
+            </div>
+            <button class="switch is-on" type="button" data-cookie-toggle aria-label="Attiva o disattiva i cookie performance" aria-pressed="true"></button>
+          </div>
+        </div>
+
+        <div class="cookie-category">
+          <div class="cookie-category-top">
+            <div>
+              <h4>Advertisement</h4>
+              <span class="always-active">Opzionali</span>
+              <p>Advertisement cookies are used to provide visitors with customised advertisements based on the pages you visited previously and to analyse the effectiveness of the ad campaigns.</p>
+            </div>
+            <button class="switch is-on" type="button" data-cookie-toggle aria-label="Attiva o disattiva i cookie pubblicitari" aria-pressed="true"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="cookie-foot">
+        <button class="btn btn-outline-blue" id="rejectCookiesModal">Rifiuta</button>
+        <button class="btn btn-outline-blue" id="savePreferences">Save My Preferences</button>
+        <button class="btn btn-solid-blue" id="acceptCookiesModal">Accetta</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const accordionItems = Array.from(document.querySelectorAll('.accordion-item'));
+    const navLinks = Array.from(document.querySelectorAll('[data-open]'));
+    const menuToggle = document.getElementById('menuToggle');
+    const siteNav = document.getElementById('siteNav');
+
+    function setMenuState(isOpen) {
+      if (!menuToggle || !siteNav) return;
+      menuToggle.classList.toggle('is-open', isOpen);
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      siteNav.classList.toggle('open', isOpen);
+    }
+
+    function closeMenu() {
+      setMenuState(false);
+    }
+
+    function closeAll() {
+      accordionItems.forEach(item => item.classList.remove('open'));
+    }
+
+    function openItem(id) {
+      accordionItems.forEach(item => {
+        item.classList.toggle('open', item.id === id && !item.classList.contains('open'));
+      });
+    }
+
+    document.querySelectorAll('.accordion-trigger').forEach(button => {
+      button.addEventListener('click', () => {
+        openItem(button.dataset.target);
+      });
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        const id = link.dataset.open;
+        const item = document.getElementById(id);
+        if (!item) return;
+        closeAll();
+        item.classList.add('open');
+        closeMenu();
+      });
+    });
+
+    if (menuToggle && siteNav) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = siteNav.classList.contains('open');
+        setMenuState(!isOpen);
+      });
+
+      document.addEventListener('click', event => {
+        if (!siteNav.classList.contains('open')) return;
+        if (siteNav.contains(event.target) || menuToggle.contains(event.target)) return;
+        closeMenu();
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 900) closeMenu();
+      });
+    }
+
+    const cookieOverlay = document.getElementById('cookieOverlay');
+    const cookieBannerWrap = document.getElementById('cookieBannerWrap');
+    const cookieModal = document.getElementById('cookieModal');
+    const cookieToggles = Array.from(document.querySelectorAll('[data-cookie-toggle]'));
+
+    function setToggleState(toggle, isOn) {
+      toggle.classList.toggle('is-on', isOn);
+      toggle.setAttribute('aria-pressed', String(isOn));
+    }
+
+    function setAllOptionalCookies(isOn) {
+      cookieToggles.forEach(toggle => setToggleState(toggle, isOn));
+    }
+
+    function hideCookies() {
+      cookieOverlay.style.display = 'none';
+      cookieBannerWrap.style.display = 'none';
+      cookieModal.classList.remove('show');
+    }
+
+    function openPreferences() {
+      cookieModal.classList.add('show');
+    }
+
+    function closePreferences() {
+      cookieModal.classList.remove('show');
+    }
+
+    cookieToggles.forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const isOn = toggle.classList.contains('is-on');
+        setToggleState(toggle, !isOn);
+      });
+    });
+
+    document.getElementById('acceptCookies').addEventListener('click', () => {
+      setAllOptionalCookies(true);
+      hideCookies();
+    });
+
+    document.getElementById('rejectCookies').addEventListener('click', () => {
+      setAllOptionalCookies(false);
+      hideCookies();
+    });
+
+    document.getElementById('acceptCookiesModal').addEventListener('click', () => {
+      setAllOptionalCookies(true);
+      hideCookies();
+    });
+
+    document.getElementById('rejectCookiesModal').addEventListener('click', () => {
+      setAllOptionalCookies(false);
+      hideCookies();
+    });
+
+    document.getElementById('savePreferences').addEventListener('click', hideCookies);
+    document.getElementById('openPreferences').addEventListener('click', openPreferences);
+    document.getElementById('closePreferences').addEventListener('click', closePreferences);
+    cookieOverlay.addEventListener('click', closePreferences);
+  </script>
 </body>
 </html>
