@@ -205,13 +205,14 @@
       line-height: 2;
     }
 
-    .intro-letter p { margin: 0 0 16px; }
+    .intro-letter p { margin: 0; }
 
     .intro-letter .saluto {
       font-family: "Brush Script MT", "Segoe Script", cursive;
       font-size: clamp(1.45rem, 2.4vw, 1.7rem);
       line-height: 1;
       color: #3a3a3a;
+      margin-bottom: 12px;
     }
 
     .intro-letter .body {
@@ -219,7 +220,7 @@
     }
 
     .intro-letter .firma {
-      padding-top: 4px;
+      padding-top: 12px;
       font-family: "Brush Script MT", "Segoe Script", cursive;
       font-size: clamp(1.5rem, 2.5vw, 1.75rem);
       line-height: 1;
@@ -268,6 +269,40 @@
       font-size: 1.04rem;
       line-height: 2;
       color: var(--text);
+    }
+
+    .impegno-list {
+      display: grid;
+      gap: 28px;
+    }
+
+    .impegno-row {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .impegno-row.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .impegno-media,
+    .impegno-text {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    .impegno-media img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 24px;
+      object-fit: cover;
+      box-shadow: 0 16px 32px rgba(0,0,0,.12);
+    }
+
+    .impegno-text p {
+      margin: 0;
     }
 
     .accordion-item.open .accordion-content { display: block; }
@@ -678,6 +713,17 @@
         font-size: .88rem;
         padding: 15px 20px;
       }
+
+      .impegno-list {
+        gap: 22px;
+      }
+
+      .impegno-row,
+      .impegno-row.reverse {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        gap: 14px;
+      }
     }
   </style>
 </head>
@@ -700,6 +746,7 @@
 
       <nav id="siteNav">
         <a href="#mi-presento" data-open="mi-presento">La mia storia</a>
+        <a href="#il-mio-impegno" data-open="il-mio-impegno">Il mio impegno</a>
       </nav>
     </div>
   </header>
@@ -714,13 +761,11 @@
         <div class="card">
           <div class="intro-letter">
             <p class="saluto">Care cittadine e cari cittadini,</p>
-            <p class="body">mi candido come Consigliera comunale di Venezia perché questa città è la mia casa, dove sono nata e ho costruito la mia vita.</p>
-            <p class="body">Da Mestre a Marghera, fino alla Gazzera dove vivo dal 1997, il mio percorso è sempre stato legato al territorio e alle sue comunità.</p>
-            <p class="body">Laureata in Scienze Politiche con formazione in marketing internazionale, ho maturato la mia esperienza lavorativa tra Mestre e Marghera, acquisendo competenze organizzative, gestionali e di problem solving.</p>
-            <p class="body">Nel 2020 eletta Consigliera della Municipalità di Chirignago Zelarino e nominata Vicepresidente esecutivo con deleghe a sicurezza, commercio, verde pubblico e parchi, lavorando a progetti per migliorare i quartieri.</p>
-            <p class="body">Nel 2022 ho assunto il ruolo di Assessore alla sicurezza del Comune di Venezia impegnandomi per rafforzare il controllo del territorio e migliorare la sicurezza nei quartieri, con particolare attenzione ai giovani.</p>
+            <p class="body">mi candido come Consigliera Comunale di Venezia perché questa città è la mia casa.</p>
+            <p class="body">Laureata in Scienze Politiche, ho maturato la mia esperienza lavorativa tra Mestre e Marghera.</p>
+            <p class="body">Nel 2020 sono stata eletta Consigliera della Municipalità di Chirignago-Zelarino e Vicepresidente dell’Esecutivo con deleghe a sicurezza, commercio e verde pubblico.</p>
+            <p class="body">Dal 2022 sono Assessore alla Sicurezza del Comune di Venezia, impegnata a rafforzare il controllo del territorio e la sicurezza, con particolare attenzione ai giovani.</p>
             <p class="body">Oggi voglio continuare questo impegno insieme a voi, con ascolto e concretezza.</p>
-            <p class="body">Insieme per la nostra città!</p>
             <p class="firma">Elisabetta Pesce</p>
           </div>
 
@@ -734,14 +779,59 @@
                 </span>
               </button>
               <div class="accordion-content">
-                <p>Sono nata a Mestre nel 1967 e cresciuta a Marghera, dove la mia famiglia ha gestito un’attività commerciale fondata dai miei nonni paterni tra la prima e la seconda guerra mondiale. Un’esperienza che mi ha trasmesso il valore del lavoro, del sacrificio e il forte legame con il territorio.</p>
-                <p>Ho frequentato l’Istituto tecnico commerciale “Foscari”, dove ho avuto anche l’opportunità di far parte della squadra di pallavolo, partecipando alle finali nazionali dei campionati studenteschi a Cagliari. Successivamente mi sono laureata in Scienze Politiche e ho conseguito un corso post laurea in marketing e commercio internazionale presso l’Università di Padova.</p>
+                <p>Sono nata a Mestre nel 1967 e cresciuta a Marghera, dove la mia famiglia ha gestito un’attività commerciale fondata dai miei nonni tra la prima e la seconda guerra mondiale. Un’esperienza che mi ha trasmesso il valore del lavoro, del sacrificio e il forte legame con il territorio.</p>
+                <p>Ho frequentato l’Istituto tecnico commerciale “Foscari”, dove ho avuto anche l’opportunità di far parte della squadra di pallavolo, partecipando alle finali nazionali a Cagliari. Successivamente mi sono laureata in Scienze Politiche e ho conseguito un corso post laurea in marketing e commercio internazionale presso l’Università di Padova.</p>
                 <p>Ho iniziato il mio percorso professionale in una società di servizi informatici con sede prima a Mestre e poi a Marghera, maturando competenze organizzative, gestionali e di problem solving.</p>
                 <p>Dal 1997 vivo alla Gazzera, sono mamma di un figlio e credo profondamente nei valori della famiglia, della comunità e delle nostre tradizioni. Da sempre coltivo la passione per lo sport e il ballo, strumenti importanti di aggregazione e benessere.</p>
-                <p>Nel 2020 sono stata eletta Consigliera della Municipalità di Chirignago Zelarino e nominata Vicepresidente dell’esecutivo, con deleghe alla sicurezza, al commercio, al verde pubblico e ai parchi, lavorando su nuovi progetti che hanno contribuito a migliorare la Municipalità e la qualità della vita nei quartieri.</p>
-                <p>Nel 2022 ho accettato con senso di responsabilità l’incarico di Assessore alla sicurezza del Comune di Venezia, con l’obiettivo di contribuire concretamente al miglioramento della qualità della vita dei cittadini.</p>
-                <p>In questi anni ho avuto l’onore di servire la nostra comunità con impegno e determinazione, seguendo da vicino progetti di potenziamento della videosorveglianza, iniziative educative rivolte ai giovani e interventi mirati a rafforzare la sicurezza nei nostri quartieri.</p>
-                <p>Con lo stesso impegno, intendo continuare a lavorare per una città attenta alle persone e vicina ai bisogni dei cittadini, mettendo al centro ascolto, concretezza e responsabilità.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item" id="il-mio-impegno">
+              <button class="accordion-trigger" type="button" data-target="il-mio-impegno">
+                <span>Il mio impegno</span>
+                <span class="accordion-icon">
+                  <span class="icon-plus">+</span>
+                  <span class="icon-minus">−</span>
+                </span>
+              </button>
+              <div class="accordion-content">
+                <div class="impegno-list">
+                  <div class="impegno-row">
+                    <div class="impegno-media">
+                      <img src="./ilMioImpegno1.png" alt="Elisabetta Pesce durante il suo impegno istituzionale" />
+                    </div>
+                    <div class="impegno-text">
+                      <p>Nel 2020 sono stata eletta Consigliera della Municipalità di Chirignago Zelarino e nominata Vicepresidente dell’esecutivo, con deleghe alla sicurezza, al commercio, al verde pubblico e ai parchi, lavorando su nuovi progetti che hanno contribuito a migliorare la Municipalità e la qualità della vita nei quartieri.</p>
+                    </div>
+                  </div>
+
+                  <div class="impegno-row reverse">
+                    <div class="impegno-media">
+                      <img src="./ilMioImpegno2.png" alt="Elisabetta Pesce nel ruolo di Assessore alla sicurezza del Comune di Venezia" />
+                    </div>
+                    <div class="impegno-text">
+                      <p>A febbraio 2022 ho accettato con senso di responsabilità l’incarico di Assessore alla sicurezza del Comune di Venezia, con l’obiettivo di contribuire concretamente al miglioramento della qualità della vita dei cittadini.</p>
+                    </div>
+                  </div>
+
+                  <div class="impegno-row">
+                    <div class="impegno-media">
+                      <img src="./ilMioImpegno3.png" alt="Elisabetta Pesce impegnata in progetti per la sicurezza e la comunità" />
+                    </div>
+                    <div class="impegno-text">
+                      <p>In questi anni ho avuto l’onore di servire la nostra comunità con impegno e determinazione, seguendo da vicino progetti di potenziamento della videosorveglianza, iniziative educative rivolte ai giovani e interventi mirati a rafforzare la sicurezza nei nostri quartieri.</p>
+                    </div>
+                  </div>
+
+                  <div class="impegno-row reverse">
+                    <div class="impegno-media">
+                      <img src="./ilMioImpegno4.png" alt="Elisabetta Pesce e il suo impegno futuro per la città" />
+                    </div>
+                    <div class="impegno-text">
+                      <p>Con lo stesso impegno, intendo continuare a lavorare per una città attenta alle persone e vicina ai bisogni dei cittadini, mettendo al centro ascolto, concretezza e responsabilità.</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -982,9 +1072,20 @@
     }
 
     function hideCookies() {
+      const scrollY = window.scrollY;
+      const scrollX = window.scrollX;
+
+      if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
+
       cookieOverlay.style.display = 'none';
       cookieBannerWrap.style.display = 'none';
       cookieModal.classList.remove('show');
+
+      requestAnimationFrame(() => {
+        window.scrollTo(scrollX, scrollY);
+      });
     }
 
     function openPreferences() {
