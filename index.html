@@ -6,10 +6,14 @@
   <title>Elisabetta Pesce</title>
   <meta property="og:title" content="Elisabetta Pesce" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="./Images/Header/fotoUrl.png" />
+  <meta property="og:url" content="https://www.elisabettapesce.it/" />
+  <meta property="og:image" content="https://www.elisabettapesce.it/Images/Header/fotoUrl.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Elisabetta Pesce" />
-  <meta name="twitter:image" content="./Images/Header/fotoUrl.png" />
+  <meta name="twitter:image" content="https://www.elisabettapesce.it/Images/Header/fotoUrl.png" />
   <link rel="icon" type="image/png" href="./Images/Header/logo.png" />
   <link rel="shortcut icon" href="./Images/Header/logo.png" />
   <link rel="apple-touch-icon" href="./Images/Header/logo.png" />
@@ -190,30 +194,55 @@
 
     .hero-cta {
       position: absolute;
-      left: 50%;
-      bottom: 52px;
-      transform: translateX(-50%);
+      left: 3.5cm;
+      bottom: 10cm;
+      transform: none;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 290px;
-      padding: 18px 38px;
-      border-radius: 999px;
-      background: var(--cta-blue);
+      width: min(254px, calc(100% - 48px));
+      min-height: 44px;
+      padding: 10px 22px;
+      border-radius: 0;
+      border: 0;
+      background: transparent;
       color: white;
-      font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
-      font-size: 1.12rem;
-      font-weight: 800;
-      letter-spacing: .02em;
-      line-height: 1;
-      box-shadow: 0 18px 32px rgba(0,0,0,.18);
-      transition: transform .2s ease, opacity .2s ease, background .2s ease;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: calc(1.14rem + 2px);
+      font-weight: 700;
+      letter-spacing: 0;
+      line-height: 1.1;
+      text-align: center;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.16));
+      overflow: visible;
+      transition: transform .2s ease, filter .2s ease;
       z-index: 2;
     }
 
+    .hero-cta::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 6px;
+      background: var(--blue);
+      transform: skewX(-10deg);
+      z-index: -1;
+      transition: background .2s ease;
+    }
+
     .hero-cta:hover {
-      transform: translateX(-50%) translateY(-2px);
-      opacity: .95;
+      transform: translateY(-2px);
+      color: white;
+      filter: drop-shadow(0 12px 22px rgba(0,0,0,.2));
+    }
+
+    .hero-cta:hover::before {
+      background: #1b1f73;
+    }
+
+    .hero-cta:focus-visible {
+      outline: 3px solid rgba(255,210,0,.9);
+      outline-offset: 4px;
     }
 
     .hero-image {
@@ -585,10 +614,17 @@
       }
 
       .hero-cta {
-        min-width: 210px;
-        padding: 13px 24px;
-        font-size: .92rem;
-        bottom: 28px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(224px, calc(100% - 36px));
+        min-height: 42px;
+        padding: 9px 20px;
+        font-size: calc(.96rem + 2px);
+        bottom: 22px;
+      }
+
+      .hero-cta:hover {
+        transform: translateX(-50%) translateY(-2px);
       }
 
       .blue-section {
@@ -693,7 +729,9 @@
           <source media="(max-width: 640px)" srcset="./Images/Body/Cover/foto1SmartPhone.png" />
           <img src="./Images/Body/Cover/foto1.png" alt="Elisabetta Pesce" class="hero-image" />
         </picture>
+        <!-- Funzionalita in via di sviluppo:
         <a href="https://www.facebook.com/share/17CSxLoLNe/?mibextid=wwXIfr" class="hero-cta" target="_blank" rel="noopener noreferrer">Restiamo in contatto</a>
+        -->
       </div>
     </section>
 
