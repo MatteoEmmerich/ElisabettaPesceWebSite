@@ -338,6 +338,16 @@
       color: white;
     }
 
+    .icon-minus {
+      font-size: 0;
+    }
+
+    .icon-minus::before {
+      content: "-";
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
     .accordion-content {
       display: none;
       padding: 20px 8px 8px;
@@ -378,6 +388,161 @@
 
     .impegno-text p {
       margin: 0;
+    }
+
+    .city-work-list {
+      display: grid;
+      gap: 40px;
+    }
+
+    .city-work-item {
+      display: grid;
+      gap: 22px;
+      padding-bottom: 34px;
+      border-bottom: 1px solid rgba(35, 40, 140, 0.16);
+    }
+
+    .city-work-item:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .city-work-title {
+      margin: 0;
+      color: var(--blue);
+      font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+
+    .city-work-subtitle {
+      display: block;
+      margin-top: 6px;
+      color: #4a4f8f;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+      text-transform: none;
+    }
+
+    .city-work-layout {
+      display: grid;
+      gap: 24px;
+    }
+
+    .city-work-media {
+      min-width: 0;
+    }
+
+    .city-work-gallery-desktop {
+      display: grid;
+      gap: 14px;
+    }
+
+    .city-work-gallery-desktop.three-up {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .city-work-gallery-desktop.two-up {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .city-work-gallery-mobile {
+      display: none;
+    }
+
+    .city-work-gallery-desktop img,
+    .city-work-gallery-mobile img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 220px;
+      border-radius: 24px;
+      object-fit: cover;
+      box-shadow: 0 16px 32px rgba(0,0,0,.12);
+    }
+
+    .city-work-text {
+      display: grid;
+      gap: 16px;
+    }
+
+    .city-work-text.three-up {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .city-work-text.two-up {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .city-work-text p,
+    .city-work-text ul,
+    .city-work-source {
+      margin: 0;
+    }
+
+    .city-work-stats {
+      display: grid;
+      align-content: center;
+      gap: 10px;
+      padding: 18px 20px;
+      min-height: 220px;
+      border-radius: 24px;
+      background: rgba(35, 40, 140, 0.06);
+      box-shadow: inset 0 0 0 1px rgba(35, 40, 140, 0.08);
+    }
+
+    .city-work-stats strong {
+      display: block;
+      color: var(--blue);
+      font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+      font-size: 1.08rem;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .city-work-source {
+      font-size: .95rem;
+      line-height: 1.7;
+      word-break: break-word;
+    }
+
+    .city-work-source a {
+      color: var(--blue);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .city-work-line {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .city-work-line-text {
+      display: flex;
+      align-items: center;
+      font-size: 1rem;
+      line-height: 1.82;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .city-work-line-text p {
+      margin: 0;
+    }
+
+    .city-work-line-media img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 760px;
+      margin: 0 auto;
+      border-radius: 24px;
+      object-fit: contain;
+      box-shadow: 0 16px 32px rgba(0,0,0,.12);
     }
 
     .accordion-item.open .accordion-content { display: block; }
@@ -651,6 +816,75 @@
         gap: 14px;
       }
 
+      .city-work-list {
+        gap: 30px;
+      }
+
+      .city-work-item {
+        gap: 16px;
+        padding-bottom: 28px;
+      }
+
+      .city-work-title {
+        font-size: 1.18rem;
+      }
+
+      .city-work-subtitle {
+        font-size: .92rem;
+      }
+
+      .city-work-layout,
+      .city-work-text.three-up,
+      .city-work-text.two-up {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .city-work-gallery-desktop {
+        display: none;
+      }
+
+      .city-work-gallery-mobile {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .city-work-gallery-mobile.single {
+        grid-template-columns: 1fr;
+      }
+
+      .city-work-gallery-desktop img,
+      .city-work-gallery-mobile img {
+        min-height: 160px;
+        border-radius: 18px;
+      }
+
+      .city-work-text {
+        gap: 14px;
+      }
+
+      .city-work-stats {
+        padding: 16px 18px;
+        min-height: 0;
+        border-radius: 20px;
+      }
+
+      .city-work-line {
+        gap: 16px;
+      }
+
+      .city-work-line-text {
+        font-size: .98rem;
+        line-height: 1.72;
+        max-width: 100%;
+      }
+
+      .city-work-line-media img {
+        max-width: 100%;
+        border-radius: 18px;
+      }
+
       footer {
         padding: 40px 0;
       }
@@ -722,6 +956,7 @@
       <nav id="siteNav">
         <a href="#mi-presento" data-open="mi-presento">La mia storia</a>
         <a href="#il-mio-impegno" data-open="il-mio-impegno">Il mio impegno</a>
+        <a href="#il-mio-lavoro-per-la-citta" data-open="il-mio-lavoro-per-la-citta">Il mio lavoro per la citta</a>
       </nav>
     </div>
   </header>
@@ -818,6 +1053,82 @@
               </div>
             </div>
 
+            <div class="accordion-item" id="il-mio-lavoro-per-la-citta">
+              <button class="accordion-trigger" type="button" data-target="il-mio-lavoro-per-la-citta">
+                <span>Il mio lavoro per la citta</span>
+                <span class="accordion-icon">
+                  <span class="icon-plus">+</span>
+                  <span class="icon-minus">ƒ^'</span>
+                </span>
+              </button>
+              <div class="accordion-content">
+                <div class="city-work-list">
+                  <article class="city-work-item">
+                    <h3 class="city-work-title">
+                      Videosorveglianza
+                      <span class="city-work-subtitle">Un sistema potenziato e capillare</span>
+                    </h3>
+                    <div class="city-work-layout">
+                      <div class="city-work-line">
+                        <div class="city-work-line-media">
+                            <img src="./Images/Body/IlMioLavoroPerLaCItta/VideoSorveglianza/Video1.jpg" alt="Sistema di videosorveglianza urbana a Venezia" />
+                        </div>
+                        <div class="city-work-line-text">
+                            <p>Negli ultimi 10 anni il sistema di videosorveglianza urbana e stato potenziato in modo significativo, passando dalle 132 telecamere attive nel 2015 alle 920 installate nel 2026. Un incremento che testimonia un investimento concreto e continuo nel rafforzamento della sicurezza urbana e nel controllo del territorio.</p>
+                        </div>
+                        <div class="city-work-line-media">
+                            <img src="./Images/Body/IlMioLavoroPerLaCItta/VideoSorveglianza/Video2.jpg" alt="Controllo del territorio con nuove telecamere" />
+                        </div>
+                        <div class="city-work-line-text">
+                            <p>Oggi il sistema rappresenta un'infrastruttura strategica condivisa, a disposizione di tutte le Forze dell'Ordine per attivita di prevenzione, controllo e indagine. Negli ultimi 4 anni sono stati destinati oltre 3 milioni di euro al suo potenziamento, migliorando copertura, qualita tecnologica e capacita di presidio del territorio.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+
+                  <article class="city-work-item">
+                    <h3 class="city-work-title">Progetto Oculus</h3>
+                    <div class="city-work-layout">
+                      <div class="city-work-line">
+                        <div class="city-work-line-media">
+                            <img src="./Images/Body/IlMioLavoroPerLaCItta/Oculus/Oculus1.jpg" alt="Attivita del progetto Oculus sul territorio" />
+                        </div>
+                        <div class="city-work-line-text">
+                            <p>Nel corso del mandato, il programma Oculus si e affermato come uno degli strumenti piu efficaci per il presidio della legalita e il contrasto al degrado urbano, grazie all'azione coordinata della Polizia Locale. L'investimento sulla sicurezza urbana e sulla riqualificazione degli spazi pubblici ha prodotto risultati concreti nel recupero di aree degradate e nella prevenzione di situazioni di illegalita.</p>
+                        </div>
+                        <div class="city-work-line-media">
+                            <img src="./Images/Body/IlMioLavoroPerLaCItta/Oculus/Oculus2.jpg" alt="Interventi del progetto Oculus contro il degrado urbano" />
+                        </div>
+                        <div class="city-work-line-text">
+                            <p>Attraverso un'attivita costante di monitoraggio, controllo e bonifica dei siti abbandonati, il programma ha consentito interventi tempestivi su accampamenti abusivi e contesti critici, restituendo decoro e vivibilita a numerose aree del territorio. Negli ultimi tre anni il Servizio Sicurezza Urbana ha realizzato 571 sopralluoghi, 359 interventi di bonifica e 121 denunce per occupazione abusiva. <span class="city-work-source">Fonte dati: Rapporto annuale 2025 sull'attivita del Corpo di Polizia Locale di Venezia. <a href="https://www.comune.venezia.it/sites/comune.venezia.it/files/documenti/Polizia_Municipale/Report%202026%20dati%202025.pdf" target="_blank" rel="noopener noreferrer">Apri il report</a></span></p>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+
+                  <article class="city-work-item">
+                    <h3 class="city-work-title">Unita cinofile</h3>
+                    <div class="city-work-layout">
+                      <div class="city-work-line">
+                        <div class="city-work-line-media">
+                            <img src="./Images/Body/IlMioLavoroPerLaCItta/Cinofila/Cinofila1.jpg" alt="Unita cinofile della Polizia Locale di Venezia" />
+                        </div>
+                        <div class="city-work-line-text">
+                            <p>Nel corso del mandato e stato rafforzato in modo significativo il dispositivo di contrasto allo spaccio di sostanze stupefacenti, anche attraverso il potenziamento delle unita cinofile della Polizia Locale. Da un servizio assente nel 2015, oggi si e arrivati a una squadra composta da cinque unita operative attive su tutto il territorio comunale, di cui una stabilmente assegnata al Lido.</p>
+                        </div>
+                        <div class="city-work-line-media">
+                            <img src="./Images/Body/IlMioLavoroPerLaCItta/Cinofila/Cinofila2.jpg" alt="Attivita operative delle unita cinofile sul territorio comunale" />
+                        </div>
+                        <div class="city-work-line-text">
+                            <p>Abbiamo costruito da zero un servizio altamente specializzato, oggi punto di riferimento nelle attivita di contrasto allo spaccio e nel rafforzamento della presenza operativa della Polizia Locale. Negli ultimi quattro anni l'attivita delle unita cinofile ha portato al sequestro e rinvenimento di 50,58 kg di sostanze stupefacenti e a 550 soggetti denunciati o arrestati.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+
             <!--
             <div class="accordion-item" id="lavoro-venezia">
               <button class="accordion-trigger" type="button" data-target="lavoro-venezia">
@@ -898,6 +1209,7 @@
           <div class="footer-nav">
             <a href="#mi-presento" data-open="mi-presento">La mia storia</a>
             <a href="#il-mio-impegno" data-open="il-mio-impegno">Il mio impegno</a>
+            <a href="#il-mio-lavoro-per-la-citta" data-open="il-mio-lavoro-per-la-citta">Il mio lavoro per la citta</a>
           </div>
         </div>
       </div>
