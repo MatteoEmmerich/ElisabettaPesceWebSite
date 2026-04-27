@@ -514,6 +514,18 @@
       text-underline-offset: 3px;
     }
 
+    .city-work-source-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .city-work-source-link::before {
+      content: "📄";
+      line-height: 1;
+    }
+
     .city-work-line {
       display: grid;
       grid-template-columns: 1fr;
@@ -548,6 +560,15 @@
     .accordion-item.open .accordion-content { display: block; }
     .accordion-item.open .icon-plus { display: none; }
     .accordion-item:not(.open) .icon-minus { display: none; }
+
+    /* Hide duplicated labels introduced in the corrupted city-work block. */
+    #il-mio-lavoro-per-la-citta > .accordion-trigger > span:nth-child(2):not(.accordion-icon) {
+      display: none;
+    }
+
+    #il-mio-lavoro-per-la-citta .city-work-item:nth-of-type(3) .city-work-title + .city-work-title {
+      display: none;
+    }
 
     footer {
       background: white;
@@ -1102,7 +1123,7 @@
                             <img src="./Images/Body/IlMioLavoroPerLaCItta/Oculus/Oculus2.jpg" alt="Interventi del progetto Oculus contro il degrado urbano" />
                         </div>
                         <div class="city-work-line-text">
-                            <p>Attraverso un'attività costante di monitoraggio, controllo e bonifica dei siti abbandonati, il programma ha consentito interventi tempestivi su accampamenti abusivi e contesti critici, restituendo decoro e vivibilità a numerose aree del territorio. Negli ultimi tre anni il Servizio Sicurezza Urbana ha realizzato 571 sopralluoghi, 359 interventi di bonifica e 121 denunce per occupazione abusiva. In sintesi, Oculus ha rafforzato il presidio della legalità con interventi continui, mirati e concreti. <span class="city-work-source">Fonte dati: Rapporto annuale 2025 sull'attività del Corpo di Polizia Locale di Venezia.<br /><a href="https://www.comune.venezia.it/sites/comune.venezia.it/files/documenti/Polizia_Municipale/Report%202026%20dati%202025.pdf" target="_blank" rel="noopener noreferrer">Apri il report</a></span></p>
+                            <p>Attraverso un'attività costante di monitoraggio, controllo e bonifica dei siti abbandonati, il programma ha consentito interventi tempestivi su accampamenti abusivi e contesti critici, restituendo decoro e vivibilità a numerose aree del territorio. Negli ultimi tre anni il Servizio Sicurezza Urbana ha realizzato 571 sopralluoghi, 359 interventi di bonifica e 121 denunce per occupazione abusiva. In sintesi, Oculus ha rafforzato il presidio della legalità con interventi continui, mirati e concreti. <span class="city-work-source">Fonte dati: Rapporto annuale 2025 sull'attività del Corpo di Polizia Locale di Venezia.<br /><a class="city-work-source-link" href="https://www.comune.venezia.it/sites/comune.venezia.it/files/documenti/Polizia_Municipale/Report%202026%20dati%202025.pdf" target="_blank" rel="noopener noreferrer">Apri il report della Polizia Locale</a></span></p>
                         </div>
                       </div>
                     </div>
