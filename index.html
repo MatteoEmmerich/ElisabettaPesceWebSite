@@ -278,15 +278,6 @@
       line-height: 2;
     }
 
-    .card > .intro-letter {
-      display: none;
-    }
-
-    .accordion-content .intro-letter {
-      margin-bottom: 0;
-      padding-top: 6px;
-    }
-
     .intro-letter p { margin: 0; }
 
     .intro-letter .saluto {
@@ -710,8 +701,7 @@
       }
 
       .menu-toggle {
-        display: inline-flex;
-        margin-left: auto;
+        display: none;
       }
 
       nav {
@@ -726,22 +716,17 @@
         margin-top: 0;
         flex-basis: 100%;
         flex-direction: row;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
         gap: 18px;
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        pointer-events: none;
-        transition: max-height .28s ease, opacity .2s ease, margin-top .2s ease, padding-top .2s ease;
-      }
-
-      nav.open {
-        max-height: 80px;
+        flex-wrap: wrap;
+        max-height: none;
+        overflow: visible;
         opacity: 1;
         pointer-events: auto;
         margin-top: 4px;
         padding-top: 2px;
+        transition: none;
       }
 
       nav a {
@@ -749,9 +734,10 @@
         padding: 0;
         border-radius: 0;
         background: transparent;
-        text-align: left;
+        text-align: center;
         font-size: .82rem;
         line-height: 1;
+        flex: 0 0 auto;
       }
 
       nav a:hover {
@@ -794,13 +780,10 @@
         height: 24px;
       }
 
-      .menu-toggle {
-        width: 30px;
-        height: 30px;
-      }
-
       nav {
         font-size: .82rem;
+        gap: 12px 16px;
+        justify-content: center;
       }
 
       .card {
@@ -985,7 +968,6 @@
       </button>
 
       <nav id="siteNav">
-        <a href="#la-mia-candidatura" data-open="la-mia-candidatura">La mia candidatura</a>
         <a href="#mi-presento" data-open="mi-presento">La mia storia</a>
         <a href="#il-mio-impegno" data-open="il-mio-impegno">Il mio impegno</a>
         <a href="#il-mio-lavoro-per-la-citta" data-open="il-mio-lavoro-per-la-citta">Il mio lavoro per la città</a>
@@ -1020,26 +1002,6 @@
           </div>
 
           <div class="accordion">
-            <div class="accordion-item" id="la-mia-candidatura">
-              <button class="accordion-trigger" type="button" data-target="la-mia-candidatura">
-                <span>La mia candidatura</span>
-                <span class="accordion-icon">
-                  <span class="icon-plus">+</span>
-                  <span class="icon-minus">−</span>
-                </span>
-              </button>
-              <div class="accordion-content">
-                <div class="intro-letter">
-                  <p class="saluto">Care cittadine e cari cittadini,</p>
-                  <p class="body">mi candido come Consigliera Comunale di Venezia perch&eacute; questa citt&agrave; &egrave; la mia casa.</p>
-                  <p class="body">Laureata in Scienze Politiche, ho maturato la mia esperienza lavorativa tra Mestre e Marghera.</p>
-                  <p class="body">Nel 2020 sono stata eletta Consigliera della Municipalit&agrave; di Chirignago-Zelarino e Vicepresidente dell&rsquo;Esecutivo con deleghe a sicurezza, commercio e verde pubblico.</p>
-                  <p class="body">Dal 2022 sono Assessore alla Sicurezza del Comune di Venezia, impegnata a rafforzare il controllo del territorio e la sicurezza, con particolare attenzione ai giovani.</p>
-                  <p class="body">Oggi voglio continuare questo impegno insieme a voi, con ascolto e concretezza.</p>
-                  <p class="firma">Elisabetta Pesce</p>
-                </div>
-              </div>
-            </div>
             <div class="accordion-item" id="mi-presento">
               <button class="accordion-trigger" type="button" data-target="mi-presento">
                 <span>La mia storia</span>
@@ -1369,7 +1331,6 @@
         <div class="footer-links">
           <p class="footer-links-title">Link utili:</p>
           <div class="footer-nav">
-            <a href="#la-mia-candidatura" data-open="la-mia-candidatura">La mia candidatura</a>
             <a href="#mi-presento" data-open="mi-presento">La mia storia</a>
             <a href="#il-mio-impegno" data-open="il-mio-impegno">Il mio impegno</a>
             <a href="#il-mio-lavoro-per-la-citta" data-open="il-mio-lavoro-per-la-citta">Il mio lavoro per la città</a>
@@ -1384,40 +1345,33 @@
     const navLinks = Array.from(document.querySelectorAll('[data-open]'));
     const menuToggle = document.getElementById('menuToggle');
     const siteNav = document.getElementById('siteNav');
-    const candidaturaItem = document.getElementById('la-mia-candidatura');
     const cityWorkItem = document.getElementById('il-mio-lavoro-per-la-citta');
-    const storyItem = document.getElementById('mi-presento');
     const impegnoItem = document.getElementById('il-mio-impegno');
+    const storyItem = document.getElementById('mi-presento');
     const cityWorkNavLink = document.querySelector('a[data-open="il-mio-lavoro-per-la-citta"]');
-    const storyNavLink = document.querySelector('a[data-open="mi-presento"]');
     const impegnoNavLink = document.querySelector('a[data-open="il-mio-impegno"]');
+    const storyNavLink = document.querySelector('a[data-open="mi-presento"]');
     const footerNav = document.querySelector('.footer-nav');
     const cityWorkFooterLink = footerNav?.querySelector('a[data-open="il-mio-lavoro-per-la-citta"]');
-    const storyFooterLink = footerNav?.querySelector('a[data-open="mi-presento"]');
     const impegnoFooterLink = footerNav?.querySelector('a[data-open="il-mio-impegno"]');
+    const storyFooterLink = footerNav?.querySelector('a[data-open="mi-presento"]');
 
-    if (candidaturaItem && cityWorkItem && storyItem && cityWorkItem.previousElementSibling !== candidaturaItem) {
-      storyItem.parentNode.insertBefore(cityWorkItem, storyItem);
+    if (cityWorkItem && impegnoItem && storyItem) {
+      const accordion = storyItem.parentNode;
+      accordion.insertBefore(cityWorkItem, accordion.firstElementChild);
+      accordion.insertBefore(impegnoItem, storyItem);
     }
 
-    if (siteNav && cityWorkNavLink && storyNavLink && cityWorkNavLink.nextElementSibling !== storyNavLink) {
-      siteNav.insertBefore(cityWorkNavLink, storyNavLink);
+    if (siteNav && cityWorkNavLink && impegnoNavLink && storyNavLink) {
+      siteNav.appendChild(cityWorkNavLink);
+      siteNav.appendChild(impegnoNavLink);
+      siteNav.appendChild(storyNavLink);
     }
 
-    if (candidaturaItem && impegnoItem && storyItem && impegnoItem.nextElementSibling !== storyItem) {
-      storyItem.parentNode.insertBefore(impegnoItem, storyItem);
-    }
-
-    if (siteNav && impegnoNavLink && storyNavLink && impegnoNavLink.nextElementSibling !== storyNavLink) {
-      siteNav.insertBefore(impegnoNavLink, storyNavLink);
-    }
-
-    if (footerNav && cityWorkFooterLink && storyFooterLink && cityWorkFooterLink.nextElementSibling !== storyFooterLink) {
-      footerNav.insertBefore(cityWorkFooterLink, storyFooterLink);
-    }
-
-    if (footerNav && impegnoFooterLink && storyFooterLink && impegnoFooterLink.nextElementSibling !== storyFooterLink) {
-      footerNav.insertBefore(impegnoFooterLink, storyFooterLink);
+    if (footerNav && cityWorkFooterLink && impegnoFooterLink && storyFooterLink) {
+      footerNav.appendChild(cityWorkFooterLink);
+      footerNav.appendChild(impegnoFooterLink);
+      footerNav.appendChild(storyFooterLink);
     }
 
     function setMenuState(isOpen) {
@@ -1477,6 +1431,7 @@
   </script>
 </body>
 </html>
+
 
 
 
