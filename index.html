@@ -67,7 +67,7 @@
       justify-content: space-between;
       gap: 40px;
       min-height: 112px;
-      padding: 14px 0;
+      padding: 4px 0;
     }
 
     .brand {
@@ -80,39 +80,11 @@
 
     .brand-logo {
       display: block;
-      width: 76px;
-      height: 76px;
+      width: auto;
+      height: 98px;
+      max-width: min(56vw, 626px);
       object-fit: contain;
       flex-shrink: 0;
-    }
-
-    .brand-title-wrap {
-      position: relative;
-      display: inline-block;
-      padding-right: 54px;
-    }
-
-    .brand-name {
-      margin: 0;
-      color: white;
-      text-transform: uppercase;
-      line-height: .95;
-      letter-spacing: 0.04em;
-      font-size: clamp(2.05rem, 2.65vw, 2.45rem);
-      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-      font-weight: 400;
-      white-space: nowrap;
-    }
-
-    .brand-pencil {
-      position: absolute;
-      top: -6px;
-      right: 0;
-      display: block;
-      width: 46px;
-      height: 46px;
-      object-fit: contain;
-      pointer-events: none;
     }
 
     nav {
@@ -688,7 +660,7 @@
       .header-inner {
         position: relative;
         min-height: auto;
-        padding: 16px 0;
+        padding: 4px 0;
         gap: 14px;
         flex-wrap: wrap;
         align-items: center;
@@ -755,29 +727,15 @@
       .container-wide { width: calc(100% - 16px); }
       .container { width: calc(100% - 16px); }
 
-      .header-inner { padding: 12px 0; }
+      .header-inner { padding: 4px 0; }
 
       .brand {
         gap: 10px;
       }
 
       .brand-logo {
-        width: 52px;
-        height: 52px;
-      }
-
-      .brand-title-wrap {
-        padding-right: 30px;
-      }
-
-      .brand-name {
-        font-size: 1.34rem;
-      }
-
-      .brand-pencil {
-        top: -4px;
-        width: 24px;
-        height: 24px;
+        height: 90px;
+        max-width: 100%;
       }
 
       nav {
@@ -955,10 +913,6 @@
     <div class="container-wide header-inner">
       <div class="brand">
         <img src="./Images/Header/logo.png" alt="Logo Elisabetta Pesce" class="brand-logo" />
-        <div class="brand-title-wrap">
-          <p class="brand-name">ELISABETTA PESCE</p>
-          <img src="./Images/Header/matita.png" alt="" class="brand-pencil" aria-hidden="true" />
-        </div>
       </div>
 
       <button class="menu-toggle" id="menuToggle" type="button" aria-label="Apri il menu di navigazione" aria-expanded="false" aria-controls="siteNav">
@@ -1166,6 +1120,7 @@
                       </div>
                     </div>
                   </article>
+                  <!--
                   <article class="city-work-item">
                     <h3 class="city-work-title">BARCAVELOX</h3>
                     <div class="city-work-layout">
@@ -1185,6 +1140,7 @@
                       </div>
                     </div>
                   </article>
+                  -->
                 </div>
               </div>
             </div>
